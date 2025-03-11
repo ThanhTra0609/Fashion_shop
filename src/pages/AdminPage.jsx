@@ -1,3 +1,5 @@
+//Update AdminPage
+//Check loi
 import { useEffect, useState } from 'react';
 import {
   getProducts,
@@ -7,6 +9,9 @@ import {
 } from '../api/productApi';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+function test(){
+  
+}
 function AdminPage() {
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
