@@ -35,7 +35,10 @@ function HomePage() {
   // Phân trang
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -60,7 +63,10 @@ function HomePage() {
                 <div className="card-body">
                   <h5 className="card-title text-truncate">{product.title}</h5>
                   <p className="card-text">Giá: {product.price} ₫</p>
-                  <Link to={`/product/${product.id}`} className="btn btn-primary">
+                  <Link
+                    to={`/product/${product.id}`}
+                    className="btn btn-primary"
+                  >
                     Xem chi tiết
                   </Link>
                 </div>
