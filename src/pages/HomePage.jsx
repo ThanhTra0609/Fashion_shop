@@ -1,9 +1,10 @@
+// src/pages/HomePage.jsx
 import { useEffect, useState } from 'react';
 import { getProducts } from '../api/productApi';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
 import Filter from '../components/Filter';
-
+import SearchBar from '../components/SearchBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function HomePage() {
@@ -11,6 +12,7 @@ function HomePage() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const productsPerPage = 8;
 
   useEffect(() => {
@@ -33,9 +35,14 @@ function HomePage() {
     );
   }
 
-  // Lọc sản phẩm theo category
+  // Lọc sản phẩm theo category và search
   const filteredProducts = products.filter((product) => {
-    return selectedCategory === '' || product.category === selectedCategory;
+    const matchCategory =
+      selectedCategory === '' || product.category === selectedCategory;
+    const matchSearch = product.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return matchCategory && matchSearch;
   });
 
   // Phân trang
@@ -50,6 +57,7 @@ function HomePage() {
 
   return (
     <div className="container mt-4 mb-5">
+
       <h1 className="text-center mb-4">Danh sách sản phẩm</h1>
 
       <div className="d-flex justify-content-between mb-4">
@@ -58,6 +66,7 @@ function HomePage() {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
 
       {/* Kiểm tra nếu không có kết quả */}
