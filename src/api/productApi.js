@@ -26,6 +26,16 @@ export const getProductById = (id) => {
   });
 };
 
+// Giả lập GET: Lấy sản phẩm theo category
+export const getProductsByCategory = (category) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const filteredProducts = products.filter((p) => p.category === category);
+      resolve({ data: filteredProducts });
+    }, 500);
+  });
+};
+
 // Giả lập POST: Thêm sản phẩm mới
 export const addProduct = (newProduct) => {
   return new Promise((resolve) => {
@@ -63,6 +73,18 @@ export const deleteProduct = (id) => {
       } else {
         reject(new Error('Không tìm thấy sản phẩm để xóa'));
       }
+    }, 500);
+  });
+};
+
+// Thêm hàm lấy 4 sản phẩm có id lớn nhất (sản phẩm mới nhất)
+export const getNewestProducts = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const sortedProducts = [...products] // Tạo bản sao của mảng products, để ds sp không bị ảnh hưởng
+        .sort((a, b) => b.id - a.id) // Sắp xếp giảm dần theo id
+        .slice(0, 4); // Lấy 4 sản phẩm đầu tiên (id lớn nhất)
+      resolve({ data: sortedProducts });
     }, 500);
   });
 };

@@ -1,40 +1,19 @@
-.App {
-  text-align: center;
+/* App.css */
+body {
+  background-color: #fff0f5 !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar,
+footer {
+  background-color: #ff69b4; /* Hồng đậm */
+}
+/* App.css */
+.navbar .nav-link {
+  font-size: 1.5rem; /* Tăng kích thước chữ */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-brand {
+  font-size: 3rem; /* Tăng kích thước tên thương hiệu */
 }
 
 .container_custom {
@@ -45,4 +24,90 @@
 
 .content_custom {
   flex: 1; /* Phần nội dung sẽ chiếm phần còn lại */
+}
+.carousel-item img {
+  max-height: 300px; /* Giới hạn chiều cao */
+  width: 100%; /* Đảm bảo full chiều ngang */
+  object-fit: contain; /* Hiển thị toàn bộ ảnh mà không bị cắt */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: black; /* Đổi màu icon thành đen */
+  border-radius: 50%; /* Bo tròn nút */
+  width: 40px; /* Điều chỉnh kích thước */
+  height: 40px;
+}
+/* NewestProducts Styles */
+.newest-products-title {
+  color: #333;
+  letter-spacing: 2px;
+}
+
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container {
+  overflow: hidden;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.product-image {
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(1.1);
+}
+
+.image-container:hover {
+  border-color: #000;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  color: #000;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: #555;
+}
+
+.explore-btn {
+  background: linear-gradient(45deg, #ff7eb3, #ff758c);
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.explore-btn:hover {
+  background: #000;
+}
+
+/* Nút Scroll To Top */
+.scroll-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  background-color: #ff69b4 !important;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px 18px;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background-color: #ff1493;
 }

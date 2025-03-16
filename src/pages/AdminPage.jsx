@@ -74,7 +74,7 @@ function AdminPage() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 mb-5">
       <h1 className="text-center mb-4">Quản lý sản phẩm</h1>
 
       <form onSubmit={handleSubmit} className="mb-4">

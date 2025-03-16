@@ -1,8 +1,9 @@
+// src/components/Navbar.jsx
 import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <Link className="navbar-brand text-white" to="/">
           Fashion Shop
@@ -27,7 +28,7 @@ function Navbar() {
                 Trang chủ
               </Link>
             </li>
-            <li className="nav-item ">
+            <li className="nav-item">
               <Link className="nav-link text-white" to="/admin">
                 Quản lý
               </Link>

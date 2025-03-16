@@ -1,19 +1,32 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProductById } from '../api/productApi';
+import { getProductById, getProductsByCategory } from '../api/productApi';
+import BackHome from '../components/BackHome';
+import Loading from '../components/Loading';
+import ProductSuggestions from '../components/ProductSuggestions';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css';
 
 function ProductDetailPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await getProductById(id);
-        setProduct(response.data); // Lấy product từ response.data
+        setProduct(response.data);
+
+        const suggestionResponse = await getProductsByCategory(
+          response.data.category
+        );
+        setSuggestions(
+          suggestionResponse.data.filter((item) => item.id !== response.data.id)
+        );
       } catch (err) {
-        setError('Không thể tải thông tin sản phẩm.');
+        setError('Sản phẩm không có trong cửa hàng.');
       }
     };
     fetchProduct();
@@ -21,20 +34,17 @@ function ProductDetailPage() {
 
   if (error) {
     return (
-      <div className="alert alert-danger text-center" role="alert">
-        {error}
+      <div>
+        <div className="alert alert-danger text-center" role="alert">
+          {error}
+        </div>
+        <BackHome />
       </div>
     );
   }
 
   if (!product) {
-    return (
-      <div className="text-center mt-4">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Đang tải...</span>
-        </div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
@@ -53,11 +63,18 @@ function ProductDetailPage() {
               <h1 className="card-title">{product.title}</h1>
               <p className="card-text">{product.description}</p>
               <h4 className="card-text text-danger">Giá: {product.price} $</h4>
-              <button className="btn btn-primary mt-3">Mua ngay</button>
+              <button
+                className="btn mt-3"
+                style={{ backgroundColor: '#ff69b4', color: 'white' }}
+              >
+                Mua ngay
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <ProductSuggestions suggestions={suggestions} />
     </div>
   );
 }
