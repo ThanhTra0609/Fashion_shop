@@ -7,6 +7,7 @@ import {
 import HomePage from './pages/HomePage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import AdminPage from './pages/AdminPage';
+import AboutUs from './pages/AboutUs';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -23,10 +24,11 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="*" element={<Navigate to="/" replace />} />{' '}
             {/* Route 404, chuyển hướng về trang chủ */}
           </Routes>
-          {/* <ScrollToTop /> */}
+          <ScrollToTop />
           <Footer />
         </Router>
       </div>
