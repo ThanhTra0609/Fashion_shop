@@ -3,7 +3,7 @@
 Dự án React đơn giản mô phỏng một website bán thời trang online. Đây là project thực hành Front-End sử dụng thư viện ReactJS kết hợp với React Router, Axios, Bootstrap,...
 
 ## 🚀 Demo
-👉 Xem demo trực tiếp: [Fashion Shop](https://thanhtra0609.github.io/Fashion_shop/)
+👉 Xem demo trực tiếp: [Fashion Shop](https://thanhtra0609.github.io/fashion-shop)
 
 ## 📌 Tính năng chính
 - Trang chủ hiển thị danh sách sản phẩm
